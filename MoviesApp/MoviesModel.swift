@@ -15,7 +15,7 @@ struct MoviesModel: Decodable {
     let movie_year: String?
     let Categories: String?
     let summary: String?
-    let ImageURL: String?
+    //let ImageURL: String?
     let imdb_id: String?
     let imdb_rating: String?
     let runtime: String?

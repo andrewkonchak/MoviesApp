@@ -14,9 +14,6 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MoviesApi.shared.downloadMovies {_ in 
-            print("Lol")
-        }
     }
 
     override func didReceiveMemoryWarning() {

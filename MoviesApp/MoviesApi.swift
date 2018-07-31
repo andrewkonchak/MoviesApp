@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 typealias CompletionHandler = (MoviesModel?) -> ()
+typealias Filter = (key: String, value: String)
 
 class MoviesApi {
 
@@ -20,8 +21,8 @@ class MoviesApi {
         static let baseUrlString = "https://hydramovies.com/api-v2/?source=http://hydramovies.com/api-v2/current-Movie-Data.csv"
     }
 
-    func downloadMovies(completionHandler: @escaping CompletionHandler) {
-        Alamofire.request(Constants.baseUrlString).responseJSON { (response) in
+    func downloadMovies(filter: [Filter], sort: String, completionHandler: @escaping CompletionHandler) {
+        Alamofire.request(Constants.baseUrlString + "&\(filter)=\(sort)").responseJSON { (response) in
             print(response)
            
             DispatchQueue.main.async {
@@ -31,10 +32,7 @@ class MoviesApi {
                     let moviesDescription = try JSONDecoder().decode(self.moviesMod, from: data)
                     completionHandler(moviesDescription)
                     
-                } catch let jsonError {
-                    print("Error srializing json: ", jsonError)
-                    completionHandler(nil)
-                }
+                } catch {}
             }
         }.resume()
     }
