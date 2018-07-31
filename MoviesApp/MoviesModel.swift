@@ -8,17 +8,26 @@
 
 import Foundation
 
-struct MoviesModel: Decodable {
+struct DiscoveryResponse: Decodable {
     
-    let Title: String?
-    let fulltitle: String?
-    let movie_year: String?
-    let Categories: String?
-    let summary: String?
-    //let ImageURL: String?
-    let imdb_id: String?
-    let imdb_rating: String?
-    let runtime: String?
-    let language: String?
-    let ytid: String?
+    let results: [DiscoveryMovieModel]?
+    
+    struct DiscoveryMovieModel: Decodable {
+        let vote_count: Int?
+        let id: Int?
+        let video: Bool?
+        let vote_average: Double?
+        let title: String?
+        let popularity: Double?
+        let poster_path: String?
+        let original_language: String?
+        let original_title: String?
+        let genre_ids: [Int]?
+        let backdrop_path: String?
+        let adult: Bool?
+        let overview: String?
+        let release_date: String?
+    }
 }
+
+
