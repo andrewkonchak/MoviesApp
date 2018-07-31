@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		8758DD079636757225244EB3 /* Pods_MoviesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC367865ED74A3B05F130C1A /* Pods_MoviesApp.framework */; };
 		B6001CFB210F42AF00C710C3 /* MoviesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6001CFA210F42AF00C710C3 /* MoviesApi.swift */; };
+		B67EF17E21105AC0004760B1 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67EF17D21105AC0004760B1 /* TableViewCell.swift */; };
+		B67EF18021105B44004760B1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67EF17F21105B44004760B1 /* TableViewController.swift */; };
 		B6ED68F7210F28EA00567B43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED68F6210F28EA00567B43 /* AppDelegate.swift */; };
-		B6ED68F9210F28EA00567B43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED68F8210F28EA00567B43 /* ViewController.swift */; };
 		B6ED68FC210F28EA00567B43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6ED68FA210F28EA00567B43 /* Main.storyboard */; };
 		B6ED68FF210F28EA00567B43 /* MoviesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6ED68FD210F28EA00567B43 /* MoviesApp.xcdatamodeld */; };
 		B6ED6901210F28EB00567B43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6ED6900210F28EB00567B43 /* Assets.xcassets */; };
@@ -21,9 +22,10 @@
 /* Begin PBXFileReference section */
 		35FF4A90257C820705B0EF1B /* Pods-MoviesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoviesApp/Pods-MoviesApp.release.xcconfig"; sourceTree = "<group>"; };
 		B6001CFA210F42AF00C710C3 /* MoviesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApi.swift; sourceTree = "<group>"; };
+		B67EF17D21105AC0004760B1 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		B67EF17F21105B44004760B1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B6ED68F3210F28EA00567B43 /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6ED68F6210F28EA00567B43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B6ED68F8210F28EA00567B43 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B6ED68FB210F28EA00567B43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6ED68FE210F28EA00567B43 /* MoviesApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoviesApp.xcdatamodel; sourceTree = "<group>"; };
 		B6ED6900210F28EB00567B43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,8 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				B6ED68F6210F28EA00567B43 /* AppDelegate.swift */,
-				B6ED68F8210F28EA00567B43 /* ViewController.swift */,
 				B6ED690B210F3F7C00567B43 /* MoviesModel.swift */,
+				B67EF17F21105B44004760B1 /* TableViewController.swift */,
+				B67EF17D21105AC0004760B1 /* TableViewCell.swift */,
 				B6001CFA210F42AF00C710C3 /* MoviesApi.swift */,
 				B6ED68FA210F28EA00567B43 /* Main.storyboard */,
 				B6ED6900210F28EB00567B43 /* Assets.xcassets */,
@@ -209,10 +212,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B67EF17E21105AC0004760B1 /* TableViewCell.swift in Sources */,
+				B67EF18021105B44004760B1 /* TableViewController.swift in Sources */,
 				B6ED690C210F3F7C00567B43 /* MoviesModel.swift in Sources */,
 				B6001CFB210F42AF00C710C3 /* MoviesApi.swift in Sources */,
 				B6ED68FF210F28EA00567B43 /* MoviesApp.xcdatamodeld in Sources */,
-				B6ED68F9210F28EA00567B43 /* ViewController.swift in Sources */,
 				B6ED68F7210F28EA00567B43 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
