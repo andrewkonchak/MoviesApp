@@ -90,8 +90,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="CMg-Pw-x3F" id="2cK-z0-2OB"/>
-                            <outlet property="delegate" destination="CMg-Pw-x3F" id="Vh1-HZ-262"/>
+                            <outlet property="dataSource" destination="CMg-Pw-x3F" id="91F-Dj-xmm"/>
+                            <outlet property="delegate" destination="CMg-Pw-x3F" id="GCo-F9-dii"/>
                         </connections>
                     </tableView>
                 </tableViewController>

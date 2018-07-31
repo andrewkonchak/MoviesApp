@@ -10,10 +10,13 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-    var movieModel = [MoviesModel]()
+//    var movieModel = [MoviesModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MoviesApi.shared.downloadMovies(parameters: ["include_video" : true]) { (MoviesModel) in
+            print("Lol")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,16 +32,15 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movieModel.count
+//        return self.movieModel.count
+        return 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "moviesCell") as! TableViewCell
         
-        cell.titleLabel.text = movieModel[indexPath.row].Title
-        cell.summaryLabel.text = movieModel[indexPath.row].summary
-        cell.imdbLabel.text = movieModel[indexPath.row].imdb_rating
+//        cell.titleLabel.text = movieModel[indexPath.row].results.first?.title
 
         return cell
     }
