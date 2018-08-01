@@ -12,37 +12,10 @@ import Alamofire
 typealias CompletionHandler = (DiscoveryResponse?) -> ()
 //typealias Filter = (key: String, value: Any)
 
-//enum Filter {
-//
-//    case genres([String])
-//    case year(Int)
-//
-//    var key: String {
-//        switch self {
-//        case .genres:
-//            return "with_genres"
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
-//    }
-//
-//    var rawValue: Any {
-//
-//        switch self {
-//        case .genres(let genres):
-//            return genres.joined(separator: "|")
-//            
-//            case .year(<#T##Int#>)
-//        }
-//
-//    }
-//}
 
 class MoviesApi {
 
     static let shared = MoviesApi()
-//    let moviesMod = DiscoveryResponse.self
     
     enum Constants {
         static let baseUrlString = "https://api.themoviedb.org/3"
@@ -50,7 +23,6 @@ class MoviesApi {
     }
 
     func downloadMovies(parameters: [String: Any], completionHandler: @escaping CompletionHandler) {
-
 
         Alamofire.request(Constants.baseUrlString + "/discover/movie?api_key=" + Constants.apiKey + "&language=en-US&sort_by=popularity.asc", parameters: parameters).responseJSON { (response) in
            
@@ -60,7 +32,6 @@ class MoviesApi {
                 do {
                     let moviesDescription = try JSONDecoder().decode(DiscoveryResponse.self, from: data)
                     completionHandler(moviesDescription)
-                    
                 } catch {
                     print(error)
                 }
