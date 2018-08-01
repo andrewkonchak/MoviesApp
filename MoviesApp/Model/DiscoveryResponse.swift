@@ -10,7 +10,7 @@ import Foundation
 
 struct DiscoveryResponse: Decodable {
     
-    let results: [DiscoveryMovieModel]?
+   let results: [DiscoveryMovieModel]?
     
     struct DiscoveryMovieModel: Decodable {
         let vote_count: Int?
