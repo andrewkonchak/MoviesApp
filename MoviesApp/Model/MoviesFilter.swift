@@ -8,28 +8,31 @@
 
 import Foundation
 
-enum Filter {
+public enum MoviesFilter {
+    
+    case genres([String])
+    case year(Int)
+    case peoples([String])
 
-//    case genres([String])
-//    case year(Int)
-//
-//    var key: String {
-//        switch self {
-//        case .genres:
-//            return "with_genres"
-//        default: break
-//        }
-//    }
-//
-//    var rawValue: Any {
-//
-//        switch self {
-//        case .genres(let genres):
-//            return genres.joined(separator: "|")
-//
-//        case .year:
-//            return Int()
-//        }
-//
-//    }
+    var key: String {
+        switch self {
+        case .genres:
+            return "with_genres"
+        case .year:
+            return "year"
+        case .peoples:
+            return "with_people"
+        }
+    }
+    
+    var rawValue: Any {
+        switch self {
+        case .genres(let genres):
+            return genres.joined(separator: "|")
+        case .year(let year):
+            return year
+        case .peoples(let peoples):
+            return peoples.joined(separator: "|")
+        }
+    }
 }

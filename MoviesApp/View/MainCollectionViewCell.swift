@@ -10,7 +10,7 @@ import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
   
+    @IBOutlet weak var movieRating: UILabel!
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    
 }
