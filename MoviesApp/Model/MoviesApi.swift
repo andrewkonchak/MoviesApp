@@ -7,11 +7,10 @@
 //
 
 import Foundation
+import UIKit
 import Alamofire
 
 typealias CompletionHandler = (DiscoveryResponse?) -> ()
-//typealias Filter = (key: String, value: Any)
-
 
 class MoviesApi {
 
@@ -22,7 +21,7 @@ class MoviesApi {
         static let apiKey = "fef7899f9aac38745096ad5f347e48ed"
     }
 
-    func downloadMovies(parameters: [String: Any], completionHandler: @escaping CompletionHandler) {
+    func downloadMovies(parameters: [String : Any], completionHandler: @escaping CompletionHandler) {
 
         Alamofire.request(Constants.baseUrlString + "/discover/movie?api_key=" + Constants.apiKey + "&language=en-US&sort_by=popularity.asc", parameters: parameters).responseJSON { (response) in
            
@@ -37,5 +36,15 @@ class MoviesApi {
                 }
             }
         }.resume()
+    }
+    
+    func downloadMovies(filters: [MoviesFilter], completionHandler: @escaping CompletionHandler) {
+        
+        var parameters: [String: Any] = [:]
+        for filter in filters {
+            parameters[filter.key] = filter.rawValue
+        }
+        
+        downloadMovies(parameters: parameters, completionHandler: completionHandler)
     }
 }

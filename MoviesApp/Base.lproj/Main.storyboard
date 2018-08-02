@@ -55,47 +55,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2x6-0j-vhJ">
-                            <size key="itemSize" width="170" height="237"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="2x6-0j-vhJ">
+                            <size key="itemSize" width="180" height="290"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCell" id="dHm-A7-61j" customClass="MainCollectionViewCell" customModule="MoviesApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="170" height="237"/>
+                                <rect key="frame" x="5" y="5" width="180" height="290"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="170" height="237"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="290"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="john-wick-chapter-2-poster" translatesAutoresizingMaskIntoConstraints="NO" id="v40-lC-UiU">
-                                            <rect key="frame" x="0.0" y="0.0" width="170" height="206.5"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="john-wick-chapter-2-poster" translatesAutoresizingMaskIntoConstraints="NO" id="v40-lC-UiU">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="256"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqx-EB-3Q6">
-                                            <rect key="frame" x="0.0" y="206.5" width="170" height="30.5"/>
-                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="XMT-H2-4Uf"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zYl-Vk-KjX" customClass="GradientView" customModule="MoviesApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="256" width="180" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                                    <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                                    <color key="value" red="0.1760599028" green="0.36187995410000001" blue="0.5095194555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowX">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="startPointX">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="v40-lC-UiU" firstAttribute="centerX" secondItem="aqx-EB-3Q6" secondAttribute="centerX" id="6I4-Sp-wrn"/>
-                                    <constraint firstItem="aqx-EB-3Q6" firstAttribute="top" secondItem="v40-lC-UiU" secondAttribute="bottom" id="BKC-1W-Jga"/>
                                     <constraint firstItem="v40-lC-UiU" firstAttribute="top" secondItem="dHm-A7-61j" secondAttribute="top" id="JNj-vZ-bw4"/>
-                                    <constraint firstAttribute="bottom" secondItem="aqx-EB-3Q6" secondAttribute="bottom" id="fIh-oE-Iw2"/>
-                                    <constraint firstAttribute="trailing" secondItem="aqx-EB-3Q6" secondAttribute="trailing" id="fo8-yh-hUh"/>
                                     <constraint firstAttribute="trailing" secondItem="v40-lC-UiU" secondAttribute="trailing" id="nMb-VI-fJ8"/>
                                     <constraint firstItem="v40-lC-UiU" firstAttribute="leading" secondItem="dHm-A7-61j" secondAttribute="leading" id="ptJ-iB-DFa"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="posterImage" destination="v40-lC-UiU" id="nMy-ka-SpT"/>
-                                    <outlet property="titleLabel" destination="aqx-EB-3Q6" id="OKH-qG-VHO"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -129,7 +136,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Boe-V6-PBX">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="favouritesCell" id="Boe-V6-PBX">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -152,7 +159,7 @@
     </scenes>
     <resources>
         <image name="favorites" width="32" height="32"/>
-        <image name="john-wick-chapter-2-poster" width="480" height="681"/>
+        <image name="john-wick-chapter-2-poster" width="214" height="317"/>
         <image name="video-camera" width="32" height="32"/>
     </resources>
 </document>

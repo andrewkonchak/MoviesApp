@@ -10,13 +10,13 @@ import Foundation
 
 struct DiscoveryResponse: Decodable {
     
-   let results: [DiscoveryMovieModel]?
+   let results: [DiscoveryMovieModel]
     
     struct DiscoveryMovieModel: Decodable {
         let vote_count: Int?
         let id: Int?
         let video: Bool?
-        let vote_average: Double?
+        let vote_average: Double
         let title: String?
         let popularity: Double?
         let poster_path: String?
