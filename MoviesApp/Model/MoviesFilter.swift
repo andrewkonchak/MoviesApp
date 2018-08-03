@@ -8,18 +8,19 @@
 
 import Foundation
 
-public enum MoviesFilter {
+enum MoviesFilter {
     
     case genres([String])
     case year(Int)
     case peoples([String])
+
 
     var key: String {
         switch self {
         case .genres:
             return "with_genres"
         case .year:
-            return "year"
+            return "primary_release_year"
         case .peoples:
             return "with_people"
         }
