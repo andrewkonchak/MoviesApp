@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8758DD079636757225244EB3 /* Pods_MoviesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC367865ED74A3B05F130C1A /* Pods_MoviesApp.framework */; };
 		B6001CFB210F42AF00C710C3 /* MoviesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6001CFA210F42AF00C710C3 /* MoviesApi.swift */; };
-		B633E911211319E000103782 /* CustomGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B633E910211319E000103782 /* CustomGradient.swift */; };
 		B6AA22CC2111D7050068B5FC /* MoviesFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AA22CB2111D7050068B5FC /* MoviesFilter.swift */; };
 		B6AA22CE2111EDB00068B5FC /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AA22CD2111EDB00068B5FC /* MainCollectionViewCell.swift */; };
 		B6AA22D12111EE390068B5FC /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AA22D02111EE390068B5FC /* MainCollectionViewController.swift */; };
@@ -24,7 +23,6 @@
 /* Begin PBXFileReference section */
 		35FF4A90257C820705B0EF1B /* Pods-MoviesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoviesApp/Pods-MoviesApp.release.xcconfig"; sourceTree = "<group>"; };
 		B6001CFA210F42AF00C710C3 /* MoviesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApi.swift; sourceTree = "<group>"; };
-		B633E910211319E000103782 /* CustomGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradient.swift; sourceTree = "<group>"; };
 		B6AA22CB2111D7050068B5FC /* MoviesFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFilter.swift; sourceTree = "<group>"; };
 		B6AA22CD2111EDB00068B5FC /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6AA22D02111EE390068B5FC /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				B6AA22D02111EE390068B5FC /* MainCollectionViewController.swift */,
+				B6AA22C82111D5A40068B5FC /* Model */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -82,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				B6AA22CD2111EDB00068B5FC /* MainCollectionViewCell.swift */,
-				B633E910211319E000103782 /* CustomGradient.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -111,7 +109,6 @@
 				B6ED68F6210F28EA00567B43 /* AppDelegate.swift */,
 				B633E90F2112D00700103782 /* Controller */,
 				B6AA22CF2111EDC70068B5FC /* View */,
-				B6AA22C82111D5A40068B5FC /* Model */,
 				B6ED68FA210F28EA00567B43 /* Main.storyboard */,
 				B6ED6900210F28EB00567B43 /* Assets.xcassets */,
 				B6ED6902210F28EB00567B43 /* LaunchScreen.storyboard */,
@@ -207,10 +204,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MoviesApp/Pods-MoviesApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -242,7 +241,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B633E911211319E000103782 /* CustomGradient.swift in Sources */,
 				B6ED690C210F3F7C00567B43 /* DiscoveryResponse.swift in Sources */,
 				B6AA22CE2111EDB00068B5FC /* MainCollectionViewCell.swift in Sources */,
 				B6AA22CC2111D7050068B5FC /* MoviesFilter.swift in Sources */,
