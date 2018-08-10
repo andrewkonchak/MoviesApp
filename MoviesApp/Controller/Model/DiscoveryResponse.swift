@@ -13,6 +13,7 @@ struct DiscoveryResponse: Decodable {
    let results: [DiscoveryMovieModel]
     
     struct DiscoveryMovieModel: Decodable {
+       
         let vote_count: Int?
         let id: Int?
         let video: Bool?
@@ -20,13 +21,16 @@ struct DiscoveryResponse: Decodable {
         let title: String?
         let popularity: Double?
         let poster_path: String?
+        let backdrop_path: String? // Full image like poster
         let original_language: String?
         let original_title: String?
         let genre_ids: [Int]?
-        let backdrop_path: String?
         let adult: Bool?
         let overview: String?
         let release_date: String?
+        let primary_release_year: Int?
+        let with_people: String?
+        let year: Int?
     }
 }
 
