@@ -9,13 +9,12 @@
 import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
-  
-    @IBOutlet weak var movieRating: UILabel!
+
     @IBOutlet weak var posterImage: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var imageOutlet: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        imageOutlet.layer.cornerRadius = 4
     }
-
 }

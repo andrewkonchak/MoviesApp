@@ -23,15 +23,12 @@ class MainCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let filter: [MoviesFilter] = [
-            .year(2018),
-//            .sortBy(field: .voteCount, order: .descending)
-        ]
-
-        
-        moviesApi.downloadMovies(filters: filter) { response in
-            
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let parameters = SettingsManager.shared.getParameters()
+        moviesApi.downloadMovies(parameters: parameters) { response in
             self.response = response
             self.collectionview.reloadData()
         }
