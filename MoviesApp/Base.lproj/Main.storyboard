@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -65,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0sm-15-0HF">
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0sm-15-0HF">
                             <rect key="frame" x="0.0" y="361.5" width="375" height="49"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -201,8 +200,8 @@
                                                 </pickerView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dL1-Vw-Yr4">
                                                     <rect key="frame" x="329" y="6" width="30" height="30"/>
-                                                    <state key="normal" image="sort-1">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="double-arrow">
+                                                        <color key="titleColor" red="0.1960784314" green="0.72156862749999995" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="sortByOrder:" destination="JH6-st-tAr" eventType="touchUpInside" id="BQU-J1-5SI"/>
@@ -265,9 +264,6 @@
                                                     </constraints>
                                                     <color key="onTintColor" red="0.1960784314" green="0.72156862749999995" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <connections>
-                                                        <segue destination="uZ1-Tl-P50" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="2Y0-g4-JUb"/>
-                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -295,6 +291,7 @@
                     </tableView>
                     <connections>
                         <outlet property="genrePickerOutlet" destination="BPX-em-3xb" id="5aD-vp-kI4"/>
+                        <outlet property="sortByOrderButtonOutlet" destination="dL1-Vw-Yr4" id="gX7-Z6-h1P"/>
                         <outlet property="sortByPickerOutlet" destination="pu1-1p-uwY" id="AGb-5y-7OM"/>
                         <outlet property="yearPickerOutlet" destination="dH0-4b-mOg" id="wpW-PV-etg"/>
                     </connections>
@@ -302,35 +299,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVe-54-nFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="952.79999999999995" y="-1550.3748125937032"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="yK9-uu-ybB">
-            <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="uZ1-Tl-P50" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7L8-xA-AZ9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BSV-0k-8n7">
-                                <rect key="frame" x="0.0" y="455" width="375" height="212"/>
-                                <color key="backgroundColor" red="1" green="0.087555509340000004" blue="0.052402389459999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="212" id="1hK-76-fgf"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="BSV-0k-8n7" firstAttribute="trailing" secondItem="xB4-CS-4YL" secondAttribute="trailing" id="NgE-mG-XdM"/>
-                            <constraint firstItem="BSV-0k-8n7" firstAttribute="bottom" secondItem="xB4-CS-4YL" secondAttribute="bottom" id="bEQ-Hg-Aai"/>
-                            <constraint firstItem="BSV-0k-8n7" firstAttribute="leading" secondItem="xB4-CS-4YL" secondAttribute="leading" id="jFi-QY-rfJ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="xB4-CS-4YL"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qUu-cF-764" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1836" y="-2002"/>
         </scene>
         <!--Movies-->
         <scene sceneID="a30-QU-apL">
@@ -354,7 +322,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="170" height="280"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="john-wick-chapter-2-poster" translatesAutoresizingMaskIntoConstraints="NO" id="RIW-BK-Hua">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="RIW-BK-Hua">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="167"/>
                                         </imageView>
                                     </subviews>
@@ -417,12 +385,12 @@
     <resources>
         <image name="animate" width="128" height="128"/>
         <image name="calendar" width="128" height="128"/>
+        <image name="double-arrow" width="512" height="512"/>
         <image name="favorites" width="32" height="32"/>
         <image name="film-reel" width="128" height="128"/>
-        <image name="john-wick-chapter-2-poster" width="214" height="317"/>
+        <image name="placeholder" width="1920" height="1080"/>
         <image name="selective" width="32" height="32"/>
         <image name="sort" width="128" height="128"/>
-        <image name="sort-1" width="64" height="64"/>
         <image name="video-camera" width="32" height="32"/>
     </resources>
 </document>
