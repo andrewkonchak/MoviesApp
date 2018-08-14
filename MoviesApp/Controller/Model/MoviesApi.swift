@@ -28,7 +28,6 @@ class MoviesApi {
         var parameters = parameters
         parameters["api_key"] = Constants.apiKey
         parameters["vote_count.gte"] = 100
-        parameters["primary_release_year"] = 2018
         Alamofire.request(Constants.baseUrlString + "/discover/movie", parameters: parameters).responseJSON { (response) in
            
             DispatchQueue.main.async {

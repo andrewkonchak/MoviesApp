@@ -15,16 +15,20 @@ final class SettingsManager {
     private(set) var filters: [MoviesFilter] = []
     private(set) var sortParameter: MovieSortParameter = MovieSortParameter.name(.ascending)
     
+    private init() {
+    }
+    
     func setFilters(_ filters: [MoviesFilter]) {
+        
         self.filters = filters
     }
     
     func setSortParameters(_ parameter: MovieSortParameter) {
+        
         sortParameter = parameter
     }
     
     func getParameters() -> [MovieParameter] {
         return filters + [sortParameter]
     }
-    
 }

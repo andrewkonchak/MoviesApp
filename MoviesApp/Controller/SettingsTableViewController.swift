@@ -12,7 +12,11 @@ class SettingsTableViewController: UITableViewController {
     
     var movieApi = MoviesApi()
     var buttonPressed = false
-    var nameSortParameters = ["Name", "Year", "Rating","Popularity"]
+    var nameSortParameters = ["Name",
+                              "Year",
+                              "Rating",
+                              "Popularity"]
+    
     var sortParameters: [MovieSortParameter] = [.name(.descending),
                                                 .year(.descending),
                                                 .rating(.descending),
@@ -48,11 +52,11 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func sortByOrder(_ sender: UIButton) {
         if buttonPressed == false {
-             sortByOrderButtonOutlet.setImage(UIImage(named: "double-arrow.png"), for: .normal)
+             sortByOrderButtonOutlet.setImage(UIImage(named: "asc.png"), for: .normal)
             buttonPressed = true
             print("ascending")
         } else {
-            sortByOrderButtonOutlet.setImage(UIImage(named: "flipImage.png"), for: .normal)
+            sortByOrderButtonOutlet.setImage(UIImage(named: "desc.png"), for: .normal)
             buttonPressed = false
             print("descending")
         }
@@ -73,13 +77,14 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func readSettings() {
-        
     }
     
     func saveSettings() {
-        
+        // Sort
         let order: MovieSortParameter.Order = buttonPressed ? .ascending : .descending
         var sortParameter: MovieSortParameter!
+        var filterParameters = [MoviesFilter]()
+        
         switch sortByPickerOutlet.selectedRow(inComponent: 0) {
         case 0:
             sortParameter = .name(order)
@@ -92,8 +97,23 @@ class SettingsTableViewController: UITableViewController {
         default:
             break
         }
+        
         SettingsManager.shared.setSortParameters(sortParameter)
+        
+        // Filter
+        
+        let selectedGenreIndex = genrePickerOutlet.selectedRow(inComponent: 0)
+        let selectedYearIndex = yearPickerOutlet.selectedRow(inComponent: 0)
+        
+        if selectedGenreIndex > 0 {
+            filterParameters.append(MoviesFilter.genres(["\(movieGenre[selectedGenreIndex - 1].id)"]))
         }
+        
+        if selectedYearIndex > 0 {
+            filterParameters.append(MoviesFilter.year(Int(yearsTillNow[selectedYearIndex - 1]) ?? 0))
+        }
+        
+        SettingsManager.shared.setFilters(filterParameters)
     }
 }
 
@@ -109,7 +129,7 @@ extension SettingsTableViewController: UIPickerViewDataSource, UIPickerViewDeleg
         } else if pickerView == sortByPickerOutlet {
             return nameSortParameters.count
         } else if pickerView == yearPickerOutlet {
-            return yearsTillNow.count
+            return yearsTillNow.count + 1
         }
         return 2
     }
@@ -117,28 +137,22 @@ extension SettingsTableViewController: UIPickerViewDataSource, UIPickerViewDeleg
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == genrePickerOutlet {
             if row == 0 {
-                return "Any"
+                return "Any genre"
             }
             return movieGenre[row - 1].name
         } else if pickerView == sortByPickerOutlet {
             return nameSortParameters[row]
         } else if pickerView == yearPickerOutlet {
+            if row == 0 {
+                return "Any year"
+            }
             return yearsTillNow[row]
         }
         return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        if pickerView == genrePickerOutlet {
-//           SettingsManager.shared.setFilters([MoviesFilter.genres(["\(movieGenre[row].id)"])])
-//        } else if pickerView == sortByPickerOutlet {
-//            print(sortParameters[row].name)
-//            SettingsManager.shared.setSortParameters(.year(.ascending))
-//            SettingsManager.shared.setSortParameters(sortParameters[row].name)
-//        } else if pickerView == yearPickerOutlet {
-//            SettingsManager.shared.setFilters([MoviesFilter.year(Int(yearsTillNow[row]) ?? 0)])
-//        }
-        saveSettings()
+            saveSettings()
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
