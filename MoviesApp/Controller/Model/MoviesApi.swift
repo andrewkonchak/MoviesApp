@@ -25,7 +25,10 @@ class MoviesApi {
     //MARK: - Download movies from link
     
     func downloadMovies(parameters: [String : Any], completionHandler: @escaping CompletionHandler) {
-        Alamofire.request(Constants.baseUrlString + "/discover/movie?api_key=" + Constants.apiKey + "&language=uk-UA&sort_by=popularity.desc", parameters: parameters).responseJSON { (response) in
+        var parameters = parameters
+        parameters["api_key"] = Constants.apiKey
+        parameters["vote_count.gte"] = 100
+        Alamofire.request(Constants.baseUrlString + "/discover/movie", parameters: parameters).responseJSON { (response) in
            
             DispatchQueue.main.async {
                 print(response)

@@ -12,19 +12,23 @@ final class SettingsManager {
     
     static let shared = SettingsManager()
     
-    private(set) var filters = [MoviesFilter.year(2019)]
-    private(set) var sortParameter = MovieSortParameter.name(.ascending)
+    private(set) var filters: [MoviesFilter] = []
+    private(set) var sortParameter: MovieSortParameter = MovieSortParameter.name(.ascending)
+    
+    private init() {
+    }
     
     func setFilters(_ filters: [MoviesFilter]) {
+        
         self.filters = filters
     }
     
     func setSortParameters(_ parameter: MovieSortParameter) {
+        
         sortParameter = parameter
     }
     
     func getParameters() -> [MovieParameter] {
         return filters + [sortParameter]
     }
-    
 }

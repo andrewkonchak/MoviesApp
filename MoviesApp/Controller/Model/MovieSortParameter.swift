@@ -11,13 +11,16 @@ import Foundation
 enum MovieSortParameter: MovieParameter {
     
     enum Order: String {
-        case ascending
-        case descending
+        case ascending = "asc"
+        case descending = "desc"
     }
     
     case name(Order)
     case year(Order)
     case rating(Order)
+    case popularity(Order)
+    
+    // TODO: popularity
     
     var key: String {
         return "sort_by"
@@ -31,6 +34,8 @@ enum MovieSortParameter: MovieParameter {
             return "release_date"
         case .rating:
             return "vote_average"
+        case .popularity:
+            return "vote_count"
         }
     }
     
@@ -38,9 +43,12 @@ enum MovieSortParameter: MovieParameter {
         switch self {
         case .name(let order),
              .year(let order),
+             .popularity(let order),
              .rating(let order):
             return "\(name).\(order.rawValue)"
         }
     }
     
 }
+
+//st
