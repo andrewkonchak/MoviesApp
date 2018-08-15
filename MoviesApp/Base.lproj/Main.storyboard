@@ -71,6 +71,9 @@
                             <state key="normal" title="Reset all">
                                 <color key="titleColor" red="0.99215686274509807" green="0.42745098039215684" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="resetAllButton:" destination="JH6-st-tAr" eventType="touchUpInside" id="yT1-xK-6L5"/>
+                            </connections>
                         </button>
                         <sections>
                             <tableViewSection headerTitle="Filter" id="Hby-cb-6NL">

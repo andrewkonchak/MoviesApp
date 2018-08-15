@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsTableViewController: UITableViewController {
-    
+
     var movieApi = MoviesApi()
     var buttonPressed = false
     var nameSortParameters = ["Name",
@@ -39,7 +39,7 @@ class SettingsTableViewController: UITableViewController {
     // Years to picker
     var yearsTillNow : [String] {
         var years = [String]()
-        for i in (1920..<2021).reversed() {
+        for i in (1920..<2019).reversed() {
             years.append("\(i)")
         }
         return years
@@ -49,6 +49,14 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var sortByPickerOutlet: UIPickerView!
     @IBOutlet weak var yearPickerOutlet: UIPickerView!
     @IBOutlet weak var sortByOrderButtonOutlet: UIButton!
+    
+    @IBAction func resetAllButton(_ sender: UIButton) {
+        
+        let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "year")
+        userDefaults.removeObject(forKey: "sortBy")
+        userDefaults.removeObject(forKey: "genre")
+    }
     
     @IBAction func sortByOrder(_ sender: UIButton) {
         if buttonPressed == false {
@@ -60,7 +68,6 @@ class SettingsTableViewController: UITableViewController {
             buttonPressed = false
             print("descending")
         }
-        
         saveSettings()
     }
     
@@ -72,11 +79,20 @@ class SettingsTableViewController: UITableViewController {
             self.genrePickerOutlet.reloadAllComponents()
         }
         
-        let parameters = SettingsManager.shared.getParameters()
         readSettings()
+        let parameters = SettingsManager.shared.getParameters()
     }
     
     func readSettings() {
+        
+        let rowSortBy = UserDefaults.standard.integer(forKey: "sortBy")
+        sortByPickerOutlet.selectRow(rowSortBy, inComponent: 0, animated: false)
+        
+        let rowYear = UserDefaults.standard.integer(forKey: "year")
+        yearPickerOutlet.selectRow(rowYear, inComponent: 0, animated: false)
+        
+        let rowGenre = UserDefaults.standard.integer(forKey: "genre")
+        genrePickerOutlet.selectRow(rowGenre, inComponent: 0, animated: false)
     }
     
     func saveSettings() {
@@ -146,13 +162,20 @@ extension SettingsTableViewController: UIPickerViewDataSource, UIPickerViewDeleg
             if row == 0 {
                 return "Any year"
             }
-            return yearsTillNow[row]
+            return yearsTillNow[row - 1]
         }
         return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            saveSettings()
+        if pickerView == sortByPickerOutlet {
+            UserDefaults.standard.set(row, forKey: "sortBy")
+        } else if pickerView == yearPickerOutlet {
+            UserDefaults.standard.set(row, forKey: "year")
+        } else if pickerView == genrePickerOutlet {
+            UserDefaults.standard.set(row, forKey: "genre")
+        }
+        saveSettings()
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {

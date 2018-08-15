@@ -19,12 +19,10 @@ final class SettingsManager {
     }
     
     func setFilters(_ filters: [MoviesFilter]) {
-        
         self.filters = filters
     }
     
     func setSortParameters(_ parameter: MovieSortParameter) {
-        
         sortParameter = parameter
     }
     
