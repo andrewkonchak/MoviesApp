@@ -20,8 +20,6 @@ enum MovieSortParameter: MovieParameter {
     case rating(Order)
     case popularity(Order)
     
-    // TODO: popularity
-    
     var key: String {
         return "sort_by"
     }
@@ -48,7 +46,4 @@ enum MovieSortParameter: MovieParameter {
             return "\(name).\(order.rawValue)"
         }
     }
-    
 }
-
-//st

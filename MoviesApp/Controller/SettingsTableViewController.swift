@@ -28,7 +28,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     private var responsed: DiscoveryResponse?
-
     
     private var filters: [MoviesFilter] = SettingsManager.shared.filters {
         didSet {
@@ -59,6 +58,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func sortByOrder(_ sender: UIButton) {
+        
         if buttonPressed == false {
              sortByOrderButtonOutlet.setImage(UIImage(named: "asc.png"), for: .normal)
             buttonPressed = true
@@ -68,11 +68,15 @@ class SettingsTableViewController: UITableViewController {
             buttonPressed = false
             print("descending")
         }
+        
+        UserDefaults.standard.set(buttonPressed, forKey: "buttonPressed")
         saveSettings()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        UserDefaults.standard.bool(forKey: "buttonPressed")
         
         movieApi.downloadGenres { (response) in
             self.response = response
@@ -96,6 +100,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func saveSettings() {
+       
         // Sort
         let order: MovieSortParameter.Order = buttonPressed ? .ascending : .descending
         var sortParameter: MovieSortParameter!
@@ -117,7 +122,6 @@ class SettingsTableViewController: UITableViewController {
         SettingsManager.shared.setSortParameters(sortParameter)
         
         // Filter
-        
         let selectedGenreIndex = genrePickerOutlet.selectedRow(inComponent: 0)
         let selectedYearIndex = yearPickerOutlet.selectedRow(inComponent: 0)
         
@@ -171,9 +175,17 @@ extension SettingsTableViewController: UIPickerViewDataSource, UIPickerViewDeleg
         if pickerView == sortByPickerOutlet {
             UserDefaults.standard.set(row, forKey: "sortBy")
         } else if pickerView == yearPickerOutlet {
-            UserDefaults.standard.set(row, forKey: "year")
+            if row == 0 {
+                UserDefaults.standard.removeObject(forKey: "year")
+            } else {
+                UserDefaults.standard.set(row, forKey: "year")
+            }
         } else if pickerView == genrePickerOutlet {
-            UserDefaults.standard.set(row, forKey: "genre")
+            if row == 0 {
+                UserDefaults.standard.removeObject(forKey: "genre")
+            } else {
+             UserDefaults.standard.set(row, forKey: "genre")
+            }
         }
         saveSettings()
     }
