@@ -14,6 +14,7 @@
 		B6610630211AF9DF005E3CA4 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B661062F211AF9DF005E3CA4 /* SettingsManager.swift */; };
 		B66FBA14211845EB003498C9 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66FBA13211845EB003498C9 /* SettingsTableViewController.swift */; };
 		B66FBA162118792C003498C9 /* GenresModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66FBA152118792C003498C9 /* GenresModel.swift */; };
+		B671B850212C188F005CFCA6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B671B84F212C188F005CFCA6 /* DetailViewController.swift */; };
 		B6AA22CC2111D7050068B5FC /* MoviesParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AA22CB2111D7050068B5FC /* MoviesParameter.swift */; };
 		B6AA22CE2111EDB00068B5FC /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AA22CD2111EDB00068B5FC /* MainCollectionViewCell.swift */; };
 		B6AA22D12111EE390068B5FC /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AA22D02111EE390068B5FC /* MainCollectionViewController.swift */; };
@@ -33,6 +34,7 @@
 		B661062F211AF9DF005E3CA4 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		B66FBA13211845EB003498C9 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		B66FBA152118792C003498C9 /* GenresModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresModel.swift; sourceTree = "<group>"; };
+		B671B84F212C188F005CFCA6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B6AA22CB2111D7050068B5FC /* MoviesParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesParameter.swift; sourceTree = "<group>"; };
 		B6AA22CD2111EDB00068B5FC /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6AA22D02111EE390068B5FC /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				B6AA22D02111EE390068B5FC /* MainCollectionViewController.swift */,
+				B671B84F212C188F005CFCA6 /* DetailViewController.swift */,
 				B66FBA13211845EB003498C9 /* SettingsTableViewController.swift */,
 				B6AA22C82111D5A40068B5FC /* Model */,
 			);
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B671B850212C188F005CFCA6 /* DetailViewController.swift in Sources */,
 				B661062C211AF978005E3CA4 /* MoviesFilter.swift in Sources */,
 				B6ED690C210F3F7C00567B43 /* DiscoveryResponse.swift in Sources */,
 				B661062E211AF9A5005E3CA4 /* MovieSortParameter.swift in Sources */,
