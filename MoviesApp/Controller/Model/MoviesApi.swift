@@ -12,6 +12,7 @@ import Alamofire
 
 typealias CompletionHandler = (DiscoveryResponse?) -> ()
 typealias GenresHandler = (GenresModel?) -> ()
+typealias TrailersHandler = (MovieVideoModel?) -> ()
 
 class MoviesApi {
 
@@ -31,7 +32,6 @@ class MoviesApi {
         Alamofire.request(Constants.baseUrlString + "/discover/movie", parameters: parameters).responseJSON { (response) in
            
             DispatchQueue.main.async {
-                print(response)
                 guard let data = response.data else { return }
                 do {
                     let moviesDescription = try JSONDecoder().decode(DiscoveryResponse.self, from: data)
@@ -62,5 +62,20 @@ class MoviesApi {
                 }
             }
         }.resume()
+    }
+    
+    //MARK: - Download movies trailers from link
+    
+    func downloadTrailer(movieId: Int, completionHandler: @escaping TrailersHandler) {
+        Alamofire.request(Constants.baseUrlString + "/movie/\(movieId)" + "/videos?api_key=" + Constants.apiKey).responseJSON { (response) in
+                print(response)
+                guard let data = response.data else { return }
+                do {
+                    let movieTrailer = try JSONDecoder().decode(MovieVideoModel.self, from: data)
+                    completionHandler(movieTrailer)
+                } catch {
+                    print(error)
+                }
+            }.resume()
     }
 }

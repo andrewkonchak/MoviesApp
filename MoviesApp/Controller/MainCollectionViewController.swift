@@ -53,14 +53,12 @@ class MainCollectionViewController: UICollectionViewController {
         return UICollectionViewCell()
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "openDetailView" {
-                let cell = sender as? MainCollectionViewCell
-                let detailVC = segue.destination as! DetailViewController
-                detailVC.imageToPresent = cell?.imageView.image
-                
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openDetailView" {
+            let collectionCell = segue.destination as? DetailViewController
+            let indexPaths = collectionView?.indexPathsForSelectedItems
+            let indexPath = indexPaths![0] as IndexPath
+            collectionCell?.movieModelDetails = movieModels[indexPath.row]
         }
     }
 }
