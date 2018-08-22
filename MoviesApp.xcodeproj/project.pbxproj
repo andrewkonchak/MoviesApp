@@ -18,6 +18,7 @@
 		B6AA22CC2111D7050068B5FC /* MoviesParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AA22CB2111D7050068B5FC /* MoviesParameter.swift */; };
 		B6AA22CE2111EDB00068B5FC /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AA22CD2111EDB00068B5FC /* MainCollectionViewCell.swift */; };
 		B6AA22D12111EE390068B5FC /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AA22D02111EE390068B5FC /* MainCollectionViewController.swift */; };
+		B6D32479212D7E7B00D28DBE /* MovieVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D32478212D7E7B00D28DBE /* MovieVideoModel.swift */; };
 		B6ED68F7210F28EA00567B43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ED68F6210F28EA00567B43 /* AppDelegate.swift */; };
 		B6ED68FC210F28EA00567B43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6ED68FA210F28EA00567B43 /* Main.storyboard */; };
 		B6ED68FF210F28EA00567B43 /* MoviesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6ED68FD210F28EA00567B43 /* MoviesApp.xcdatamodeld */; };
@@ -38,6 +39,7 @@
 		B6AA22CB2111D7050068B5FC /* MoviesParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesParameter.swift; sourceTree = "<group>"; };
 		B6AA22CD2111EDB00068B5FC /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6AA22D02111EE390068B5FC /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
+		B6D32478212D7E7B00D28DBE /* MovieVideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideoModel.swift; sourceTree = "<group>"; };
 		B6ED68F3210F28EA00567B43 /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6ED68F6210F28EA00567B43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6ED68FB210F28EA00567B43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				B6001CFA210F42AF00C710C3 /* MoviesApi.swift */,
 				B661062D211AF9A5005E3CA4 /* MovieSortParameter.swift */,
 				B661062F211AF9DF005E3CA4 /* SettingsManager.swift */,
+				B6D32478212D7E7B00D28DBE /* MovieVideoModel.swift */,
 				B661062B211AF978005E3CA4 /* MoviesFilter.swift */,
 				B66FBA152118792C003498C9 /* GenresModel.swift */,
 			);
@@ -265,6 +268,7 @@
 				B661062E211AF9A5005E3CA4 /* MovieSortParameter.swift in Sources */,
 				B6AA22CE2111EDB00068B5FC /* MainCollectionViewCell.swift in Sources */,
 				B6AA22CC2111D7050068B5FC /* MoviesParameter.swift in Sources */,
+				B6D32479212D7E7B00D28DBE /* MovieVideoModel.swift in Sources */,
 				B6001CFB210F42AF00C710C3 /* MoviesApi.swift in Sources */,
 				B66FBA14211845EB003498C9 /* SettingsTableViewController.swift in Sources */,
 				B6ED68FF210F28EA00567B43 /* MoviesApp.xcdatamodeld in Sources */,
@@ -419,7 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XM9ZV8VXG8;
 				INFOPLIST_FILE = MoviesApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -439,7 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XM9ZV8VXG8;
 				INFOPLIST_FILE = MoviesApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

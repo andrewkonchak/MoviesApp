@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 import Kingfisher
 
 class DetailViewController: UIViewController {
@@ -15,16 +16,15 @@ class DetailViewController: UIViewController {
     
     var apiMovies = MoviesApi()
     var mainView = MainCollectionViewController()
-    
-    private var response: DiscoveryResponse?
-    private var modelMovie: [DiscoveryResponse.DiscoveryMovieModel] {
-        return response?.results ?? []
-    }
+    var movieModelDetails: DiscoveryResponse.DiscoveryMovieModel?
+    private var response: MovieVideoModel?
+    private var movieTrailers: MovieVideoModel.Results?
     
     @IBOutlet weak var fullImage: UIImageView!
     @IBOutlet weak var moviesTitle: UILabel!
     @IBOutlet weak var movieSummary: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
+    @IBOutlet weak var videoWebView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,25 +33,28 @@ class DetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        apiMovies.downloadTrailer(movieId: movieModelDetails?.id ?? 0) { response in
+            self.response = response
+            self.getVideo(videoCode: response?.results.first?.key ?? "")
+        }
         downloadElements()
-        fullImage.layer.cornerRadius = 10
+    }
+    
+    func getVideo(videoCode: String) {
+        let url = URL(string: "https://www.youtube.com/embed/\(videoCode)")
+        videoWebView.load(URLRequest(url: url!))
     }
     
     func downloadElements() {
         
-        let parameters = SettingsManager.shared.getParameters()
-        apiMovies.downloadMovies(parameters: parameters) { response in
-            self.response = response
-            //            self.mainView.collectionView.reloadData()
-            self.moviesTitle.text = self.modelMovie.first?.title
-            self.movieSummary.text = self.modelMovie.first?.overview
-            self.releaseDate.text = self.modelMovie.first?.release_date
+            self.moviesTitle.text = self.movieModelDetails?.title
+            self.movieSummary.text = self.movieModelDetails?.overview
+            self.releaseDate.text = self.movieModelDetails?.release_date
             
             let backdropURL = "https://image.tmdb.org/t/p/w500"
-            if let backdropModel = self.modelMovie.first?.backdrop_path {
+            if let backdropModel = self.movieModelDetails?.backdrop_path {
                 let resource = ImageResource(downloadURL: URL(string: backdropURL + backdropModel)!, cacheKey: backdropURL + backdropModel)
                 self.fullImage.kf.setImage(with: resource)
             }
         }
     }
-}
