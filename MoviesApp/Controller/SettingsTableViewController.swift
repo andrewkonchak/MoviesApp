@@ -84,7 +84,7 @@ class SettingsTableViewController: UITableViewController {
         }
         
         readSettings()
-        let parameters = SettingsManager.shared.getParameters()
+        //let parameters = SettingsManager.shared.getParameters()
     }
     
     func readSettings() {

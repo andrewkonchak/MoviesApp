@@ -30,7 +30,7 @@ class MoviesApi {
         parameters["api_key"] = Constants.apiKey
         parameters["vote_count.gte"] = 100
         Alamofire.request(Constants.baseUrlString + "/discover/movie", parameters: parameters).responseJSON { (response) in
-           
+            print(response)
             DispatchQueue.main.async {
                 guard let data = response.data else { return }
                 do {
@@ -68,14 +68,13 @@ class MoviesApi {
     
     func downloadTrailer(movieId: Int, completionHandler: @escaping TrailersHandler) {
         Alamofire.request(Constants.baseUrlString + "/movie/\(movieId)" + "/videos?api_key=" + Constants.apiKey).responseJSON { (response) in
-                print(response)
                 guard let data = response.data else { return }
                 do {
                     let movieTrailer = try JSONDecoder().decode(MovieVideoModel.self, from: data)
                     completionHandler(movieTrailer)
                 } catch {
                     print(error)
-                }
-            }.resume()
+            }
+        }.resume()
     }
 }
