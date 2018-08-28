@@ -44,9 +44,9 @@ class SettingsTableViewController: UITableViewController {
         return years
     }
     
+    @IBOutlet weak var yearPickerOutlet: UIPickerView!
     @IBOutlet weak var genrePickerOutlet: UIPickerView!
     @IBOutlet weak var sortByPickerOutlet: UIPickerView!
-    @IBOutlet weak var yearPickerOutlet: UIPickerView!
     @IBOutlet weak var sortByOrderButtonOutlet: UIButton!
     
     @IBAction func resetAllButton(_ sender: UIButton) {

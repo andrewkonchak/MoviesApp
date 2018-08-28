@@ -9,12 +9,10 @@
 import Foundation
 
 struct MovieVideoModel: Decodable {
-    
     let id: Int?
     let results: [Results]
     
     struct Results: Decodable {
-        
         let key: String
     }
 }

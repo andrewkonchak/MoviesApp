@@ -9,6 +9,7 @@
 import Foundation
 
 protocol MovieParameter {
+   
     var key: String { get }
     var rawValue: Any { get }
 }
