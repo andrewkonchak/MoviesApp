@@ -23,10 +23,10 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var fullImage: UIImageView!
     @IBOutlet weak var moviesTitle: UILabel!
+    @IBOutlet weak var movieRating: UILabel!
     @IBOutlet weak var movieSummary: UILabel!
     @IBOutlet weak var videoWebView: WKWebView!
     @IBOutlet weak var movieReleaseDate: UILabel!
-    @IBOutlet weak var movieRating: UILabel!
     
     
     override func viewDidLoad() {

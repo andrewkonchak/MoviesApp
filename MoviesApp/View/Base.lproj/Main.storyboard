@@ -26,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AHw-i3-Ths" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="370" y="-780"/>
+            <point key="canvasLocation" x="-180" y="-779"/>
         </scene>
         <!--MoviesApp-->
         <scene sceneID="6zI-xG-rLC">
@@ -54,7 +54,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmK-iW-UiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="940" y="-779"/>
+            <point key="canvasLocation" x="793" y="-779"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="ccc-l3-N2O">
@@ -318,7 +318,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVe-54-nFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="952.79999999999995" y="-1550.3748125937032"/>
+            <point key="canvasLocation" x="794" y="-1552"/>
         </scene>
         <!--Movies-->
         <scene sceneID="a30-QU-apL">
@@ -377,7 +377,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0P-9d-rq4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1546" y="-1185"/>
+            <point key="canvasLocation" x="1754" y="-1104"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="RxP-iU-1Nd">
@@ -473,7 +473,7 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2013" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrh-TF-2iE">
                                                         <rect key="frame" x="177.5" y="0.0" width="177.5" height="30.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -548,7 +548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VfG-5c-HEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2281" y="-1035"/>
+            <point key="canvasLocation" x="2615" y="-1049"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="59P-uW-JQg">
@@ -574,7 +574,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zh1-sG-MLL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1546" y="-386"/>
+            <point key="canvasLocation" x="1753" y="-422"/>
         </scene>
     </scenes>
     <resources>

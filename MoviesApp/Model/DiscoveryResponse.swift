@@ -10,27 +10,29 @@ import Foundation
 
 struct DiscoveryResponse: Decodable {
     
-   let results: [DiscoveryMovieModel]
+    let results: [DiscoveryMovieModel]
+    let page: Int
     
     struct DiscoveryMovieModel: Decodable {
-       
-        let vote_count: Int?
+        
         let id: Int?
-        let video: Bool?
-        let vote_average: Double
-        let title: String?
-        let popularity: Double?
-        let poster_path: String?
-        let backdrop_path: String? // Full image like poster
-        let original_language: String?
-        let original_title: String?
-        let genre_ids: [Int]?
-        let adult: Bool?
-        let overview: String?
-        let release_date: String?
-        let primary_release_year: Int?
-        let with_people: String?
         let year: Int?
+        let adult: Bool?
+        let title: String?
+        let video: Bool?
+        let overview: String?
+        let genre_ids: [Int]?
+        let vote_count: Int?
+        let popularity: Double?
+        let with_people: String?
+        let poster_path: String?
+        let vote_average: Double
+        let release_date: String?
+        let backdrop_path: String? // Full image like poster
+        let original_title: String?
+        let original_language: String?
+        let primary_release_year: Int?
+        
     }
 }
 
