@@ -31,10 +31,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        
+        videoWebView.reload()
         
         apiMovies.downloadTrailer(movieId: movieModelDetails?.id ?? 0) { response in
             self.response = response
@@ -42,6 +40,10 @@ class DetailViewController: UIViewController {
         }
         downloadElements()
         releaseDateFormatter()
+        
+        // Clear WEBView color when loading
+        self.videoWebView.isOpaque = false
+        self.videoWebView.backgroundColor = UIColor.clear
     }
     
     func getVideo(videoCode: String) {

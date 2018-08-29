@@ -14,37 +14,65 @@ class MainCollectionViewController: UICollectionViewController {
 
     var moviesApi = MoviesApi()
     
-    private var response: DiscoveryResponse?
-    private var movieModels: [DiscoveryResponse.DiscoveryMovieModel] {
-        return response?.results ?? []
+    private var movies: [DiscoveryResponse.DiscoveryMovieModel] = [] {
+        didSet {
+            self.collectionview.reloadData()
+        }
     }
     
     @IBOutlet weak var collectionview: UICollectionView!
     
+    private var lastPage = 1
+    private var totalPages = 0
+    private var isFetching = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchFirstPage()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchFirstPage), name: .didUpdateSettings, object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    @objc func fetchFirstPage() {
+        lastPage = 1
         let parameters = SettingsManager.shared.getParameters()
         moviesApi.downloadMovies(parameters: parameters) { response in
-            self.response = response
-            self.collectionview.reloadData()
+            self.totalPages = response?.total_pages ?? 0
+            self.movies = response?.results ?? []
+        }
+    }
+    
+    func fetchNextPage() {
+        if isFetching {
+            return
+        }
+        
+        lastPage += 1
+        if lastPage >= totalPages {
+            return
+        }
+        isFetching = true
+        let parameters = SettingsManager.shared.getParameters()
+        moviesApi.downloadMovies(parameters: parameters, page: lastPage) { response in
+            self.isFetching = false
+            if let newMovies = response?.results {
+                self.movies.append(contentsOf: newMovies)
+            }
         }
     }
     
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieModels.count
+        return movies.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as? MainCollectionViewCell {
             
             let urls = "https://image.tmdb.org/t/p/w500/"
-            if let imageUrl = movieModels[indexPath.row].poster_path {
+            if let imageUrl = movies[indexPath.row].poster_path {
                 let resource = ImageResource(downloadURL: URL(string: urls + imageUrl)!, cacheKey: urls + imageUrl)
                 cell.posterImage.kf.setImage(with: resource)
             }
@@ -53,14 +81,21 @@ class MainCollectionViewController: UICollectionViewController {
         return UICollectionViewCell()
     }
     
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item >= movies.count - 3 {
+            fetchNextPage()
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openDetailView" {
             let collectionCell = segue.destination as? DetailViewController
             let indexPaths = collectionView?.indexPathsForSelectedItems
             let indexPath = indexPaths![0] as IndexPath
-            collectionCell?.movieModelDetails = movieModels[indexPath.row]
+            collectionCell?.movieModelDetails = movies[indexPath.row]
         }
     }
+    
 }
 
 

@@ -30,7 +30,6 @@ class MoviesApi {
         parameters["api_key"] = Constants.apiKey
         parameters["vote_count.gte"] = 100
         Alamofire.request(Constants.baseUrlString + "/discover/movie", parameters: parameters).responseJSON { (response) in
-            print(response)
             DispatchQueue.main.async {
                 guard let data = response.data else { return }
                 do {
@@ -43,8 +42,10 @@ class MoviesApi {
         }.resume()
     }
     
-    func downloadMovies(parameters: MovieParameters, completionHandler: @escaping CompletionHandler) {
-        downloadMovies(parameters: parameters.toDictionary(), completionHandler: completionHandler)
+    func downloadMovies(parameters: MovieParameters, page: Int = 1, completionHandler: @escaping CompletionHandler) {
+        var parameters = parameters.toDictionary()
+        parameters["page"] = page
+        downloadMovies(parameters: parameters, completionHandler: completionHandler)
     }
     
     //MARK: - Download movies genre from link

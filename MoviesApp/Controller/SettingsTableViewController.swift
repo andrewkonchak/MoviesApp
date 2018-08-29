@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension NSNotification.Name {
+    static let didUpdateSettings = NSNotification.Name("didUpdateSettings")
+}
+
 class SettingsTableViewController: UITableViewController {
 
     var movieApi = MoviesApi()
@@ -35,7 +39,7 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    // Years to picker
+    // MARK: - Years to picker
     var yearsTillNow : [String] {
         var years = [String]()
         for i in (1920..<2019).reversed() {
@@ -85,6 +89,11 @@ class SettingsTableViewController: UITableViewController {
         
         readSettings()
         //let parameters = SettingsManager.shared.getParameters()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.post(name: .didUpdateSettings, object: nil)
     }
     
     func readSettings() {

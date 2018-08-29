@@ -12,6 +12,7 @@ struct DiscoveryResponse: Decodable {
     
     let results: [DiscoveryMovieModel]
     let page: Int
+    let total_pages: Int
     
     struct DiscoveryMovieModel: Decodable {
         
