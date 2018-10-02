@@ -9,14 +9,15 @@
 import UIKit
 import WebKit
 import Kingfisher
+import SafariServices
 
 class DetailViewController: UIViewController {
     
     let parameters = SettingsManager.shared.getParameters()
     
     var apiMovies = MoviesApi()
-    var mainView = MainCollectionViewController()
     var movieModelDetails: DiscoveryResponse.DiscoveryMovieModel?
+    weak var mainViewController: MainCollectionViewController?
 
     private var response: MovieVideoModel?
     private var movieTrailers: MovieVideoModel.Results?
@@ -28,9 +29,34 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var videoWebView: WKWebView!
     @IBOutlet weak var movieReleaseDate: UILabel!
     
+    func showTutorial() {
+        if let url = URL(string: "https://www.google.com") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: config)
+        present(vc, animated: true)
+        }
+    }
+    
+    // peek and pop
+    override var previewActionItems: [UIPreviewActionItem] {
+        let shareAction = UIPreviewAction(title: "Share movie info", style: .default) { (action, viewController) -> Void in
+            self.showTutorial()
+//            let activityVC = UIActivityViewController(activityItems: ["Lol"], applicationActivities: nil)
+//            activityVC.popoverPresentationController?.sourceView = self.view
+//            self.present(activityVC, animated: true, completion: nil)
+        }
+        
+        let deleteAction = UIPreviewAction(title: "Cancel", style: .destructive) { (action, viewController) -> Void in
+            print("exit")
+        }
+        return [shareAction, deleteAction]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBarImage()
     }
 
     override func viewDidAppear(_ animated: Bool) {

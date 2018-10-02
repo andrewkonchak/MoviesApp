@@ -53,7 +53,7 @@ class ProgressBarView: UIView {
    
         progressLayer = CAShapeLayer()
         progressLayer.path = bgPath.cgPath
-        progressLayer.lineCap = kCALineCapRound
+        progressLayer.lineCap = CAShapeLayerLineCap.round
         progressLayer.lineWidth = 7
         progressLayer.fillColor = nil
         progressLayer.strokeColor = #colorLiteral(red: 0.9626698282, green: 0.947563047, blue: 0.2315440311, alpha: 1)

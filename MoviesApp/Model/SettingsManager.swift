@@ -13,7 +13,7 @@ final class SettingsManager {
     static let shared = SettingsManager()
     
     private(set) var filters: [MoviesFilter] = []
-    private(set) var sortParameter: MovieSortParameter = MovieSortParameter.name(.ascending)
+    private(set) var sortParameter: MovieSortParameter = MovieSortParameter.popularity(.descending)
     
     private init() {
     }

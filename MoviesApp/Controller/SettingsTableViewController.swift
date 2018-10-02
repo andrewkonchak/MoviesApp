@@ -50,7 +50,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var sortByOrderButtonOutlet: UIButton!
     
     @IBAction func resetAllButton(_ sender: UIButton) {
-        
+            
         let userDefaults = UserDefaults.standard
         userDefaults.removeObject(forKey: "year")
         userDefaults.removeObject(forKey: "sortBy")
@@ -60,7 +60,7 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func sortByOrder(_ sender: UIButton) {
         
         if buttonPressed == false {
-             sortByOrderButtonOutlet.setImage(UIImage(named: "asc.png"), for: .normal)
+            sortByOrderButtonOutlet.setImage(UIImage(named: "asc.png"), for: .normal)
             buttonPressed = true
             print("ascending")
         } else {
@@ -84,7 +84,6 @@ class SettingsTableViewController: UITableViewController {
         }
         
         readSettings()
-        //let parameters = SettingsManager.shared.getParameters()
     }
     
     func readSettings() {

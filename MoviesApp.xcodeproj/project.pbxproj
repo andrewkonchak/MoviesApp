@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8758DD079636757225244EB3 /* Pods_MoviesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC367865ED74A3B05F130C1A /* Pods_MoviesApp.framework */; };
 		B6001CFB210F42AF00C710C3 /* MoviesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6001CFA210F42AF00C710C3 /* MoviesApi.swift */; };
+		B620AA67216359A4001B9962 /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620AA66216359A4001B9962 /* MovieDetailModel.swift */; };
+		B620AA69216384AD001B9962 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B620AA68216384AD001B9962 /* TabBarController.swift */; };
 		B661062C211AF978005E3CA4 /* MoviesFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B661062B211AF978005E3CA4 /* MoviesFilter.swift */; };
 		B661062E211AF9A5005E3CA4 /* MovieSortParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B661062D211AF9A5005E3CA4 /* MovieSortParameter.swift */; };
 		B6610630211AF9DF005E3CA4 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B661062F211AF9DF005E3CA4 /* SettingsManager.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		35FF4A90257C820705B0EF1B /* Pods-MoviesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoviesApp/Pods-MoviesApp.release.xcconfig"; sourceTree = "<group>"; };
 		B6001CFA210F42AF00C710C3 /* MoviesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApi.swift; sourceTree = "<group>"; };
+		B620AA66216359A4001B9962 /* MovieDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
+		B620AA68216384AD001B9962 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B661062B211AF978005E3CA4 /* MoviesFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFilter.swift; sourceTree = "<group>"; };
 		B661062D211AF9A5005E3CA4 /* MovieSortParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSortParameter.swift; sourceTree = "<group>"; };
 		B661062F211AF9DF005E3CA4 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 				B6AA22D02111EE390068B5FC /* MainCollectionViewController.swift */,
 				B671B84F212C188F005CFCA6 /* DetailViewController.swift */,
 				B66FBA13211845EB003498C9 /* SettingsTableViewController.swift */,
+				B620AA68216384AD001B9962 /* TabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -91,6 +96,7 @@
 				B6AA22CB2111D7050068B5FC /* MoviesParameter.swift */,
 				B6001CFA210F42AF00C710C3 /* MoviesApi.swift */,
 				B661062F211AF9DF005E3CA4 /* SettingsManager.swift */,
+				B620AA66216359A4001B9962 /* MovieDetailModel.swift */,
 				B661062D211AF9A5005E3CA4 /* MovieSortParameter.swift */,
 				B6D32478212D7E7B00D28DBE /* MovieVideoModel.swift */,
 				B661062B211AF978005E3CA4 /* MoviesFilter.swift */,
@@ -185,6 +191,7 @@
 				TargetAttributes = {
 					B6ED68F2210F28EA00567B43 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -270,6 +277,8 @@
 				B6ED690C210F3F7C00567B43 /* DiscoveryResponse.swift in Sources */,
 				B661062E211AF9A5005E3CA4 /* MovieSortParameter.swift in Sources */,
 				B68597212133DDB200234D45 /* ProgressBarView.swift in Sources */,
+				B620AA67216359A4001B9962 /* MovieDetailModel.swift in Sources */,
+				B620AA69216384AD001B9962 /* TabBarController.swift in Sources */,
 				B6AA22CE2111EDB00068B5FC /* MainCollectionViewCell.swift in Sources */,
 				B6AA22CC2111D7050068B5FC /* MoviesParameter.swift in Sources */,
 				B6D32479212D7E7B00D28DBE /* MovieVideoModel.swift in Sources */,
@@ -434,7 +443,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.MoviesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -454,7 +463,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.MoviesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
