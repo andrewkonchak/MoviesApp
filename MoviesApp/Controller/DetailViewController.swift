@@ -16,11 +16,12 @@ class DetailViewController: UIViewController {
     let parameters = SettingsManager.shared.getParameters()
     
     var apiMovies = MoviesApi()
-    var movieModelDetails: DiscoveryResponse.DiscoveryMovieModel?
+    var movieModel: DiscoveryResponse.DiscoveryMovieModel?
     weak var mainViewController: MainCollectionViewController?
 
     private var response: MovieVideoModel?
     private var movieTrailers: MovieVideoModel.Results?
+    private var movieDetails: MovieDetailModel?
     
     @IBOutlet weak var fullImage: UIImageView!
     @IBOutlet weak var moviesTitle: UILabel!
@@ -28,21 +29,23 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var movieSummary: UILabel!
     @IBOutlet weak var videoWebView: WKWebView!
     @IBOutlet weak var movieReleaseDate: UILabel!
+    @IBOutlet weak var runtime: UILabel!
+    @IBOutlet weak var country: UILabel!
+    @IBOutlet weak var budget: UILabel!
+    @IBOutlet weak var revenue: UILabel!
+    @IBOutlet weak var voteCount: UILabel!
     
-    func showTutorial() {
-        if let url = URL(string: "https://www.google.com") {
-            let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = true
-            
-            let vc = SFSafariViewController(url: url, configuration: config)
-        present(vc, animated: true)
-        }
+
+    @IBAction func WEBButton(_ sender: Any) {
+        babnikLox()
     }
-    
+    @IBAction func IMDBButton(_ sender: Any) {
+        showTutorial(imdbCode: movieDetails?.imdb_id ?? "")
+    }
     // peek and pop
     override var previewActionItems: [UIPreviewActionItem] {
         let shareAction = UIPreviewAction(title: "Share movie info", style: .default) { (action, viewController) -> Void in
-            self.showTutorial()
+            self.showTutorial(imdbCode: self.movieDetails?.imdb_id ?? "")
 //            let activityVC = UIActivityViewController(activityItems: ["Lol"], applicationActivities: nil)
 //            activityVC.popoverPresentationController?.sourceView = self.view
 //            self.present(activityVC, animated: true, completion: nil)
@@ -57,16 +60,21 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarImage()
+        apiMovies.downloadDetails(moviesId: movieModel?.id ?? 0) { movieDetails in
+            self.movieDetails = movieDetails
+            self.downloadElements()
+ 
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        apiMovies.downloadTrailer(movieId: movieModelDetails?.id ?? 0) { response in
+        apiMovies.downloadTrailer(movieId: movieModel?.id ?? 0) { response in
             self.response = response
             self.getVideo(videoCode: response?.results.first?.key ?? "")
         }
-        downloadElements()
+       // downloadElements()
         releaseDateFormatter()
     }
     
@@ -75,14 +83,55 @@ class DetailViewController: UIViewController {
         videoWebView.load(URLRequest(url: url!))
     }
     
+    func showTutorial(imdbCode: String) {
+        if let url = URL(string: "https://www.imdb.com/title/\(imdbCode)/") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
+    }
+    
+    func babnikLox() {
+        if let homepage = movieDetails?.homepage, let url = URL(string: homepage) {
+            let confog = SFSafariViewController.Configuration()
+            confog.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: confog)
+            present(vc, animated: true)
+        }
+    }
+    
     func downloadElements() {
         
-        self.moviesTitle.text = self.movieModelDetails?.title
-        self.movieRating.text = forTrailingZero(temp: self.movieModelDetails?.vote_average ?? 0.0) 
-        self.movieSummary.text = self.movieModelDetails?.overview
-       
+        guard let details = movieDetails else { return }
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+
+        self.moviesTitle.text = details.title
+        self.movieRating.text = forTrailingZero(temp: details.vote_average ?? 0.0)
+        self.movieSummary.text = details.overview
+        self.country.text = details.tagline
+        self.voteCount.text = String(details.vote_count ?? 0)
+        
+        if let runtime = details.runtime {
+            let hours = runtime / 60
+            let minutes = runtime % 60
+            self.runtime.text = "\(hours) h \(minutes) m"
+        }
+
+        if let revenue = details.revenue, let revenueString = numberFormatter.string(from: NSNumber(value: revenue)) {
+            self.revenue.text = "$ \(revenueString)"
+        }
+        
+        if let budget = details.budget, let budgetString = numberFormatter.string(from: NSNumber(value: budget)) {
+            self.budget.text = "$ \(budgetString)"
+        }
+
         let backdropURL = "https://image.tmdb.org/t/p/w500"
-            if let backdropModel = self.movieModelDetails?.backdrop_path {
+            if let backdropModel = self.movieModel?.backdrop_path {
                 let resource = ImageResource(downloadURL: URL(string: backdropURL + backdropModel)!, cacheKey: backdropURL + backdropModel)
                 self.fullImage.kf.setImage(with: resource)
             }
@@ -103,7 +152,7 @@ class DetailViewController: UIViewController {
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "MMM dd,yyyy"
         
-        if let date = dateFormatterGet.date(from: movieModelDetails?.release_date ?? "" ){
+        if let date = dateFormatterGet.date(from: movieModel?.release_date ?? "" ){
             self.movieReleaseDate.text = dateFormatterPrint.string(from: date)
         }
         else {

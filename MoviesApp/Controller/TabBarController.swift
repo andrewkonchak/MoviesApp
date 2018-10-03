@@ -14,16 +14,14 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         setNavigationBarImage()
     }
-    
 }
 
 extension UIViewController {
     
-    func setNavigationBarImage(_ image: UIImage? = UIImage(named: "imdb")) {
+    func setNavigationBarImage(_ image: UIImage? = UIImage(named: "logo")) {
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         imageView.sizeToFit()
         navigationItem.titleView = imageView
     }
-    
 }

@@ -35,7 +35,6 @@ class MainCollectionViewController: UICollectionViewController {
         if( traitCollection.forceTouchCapability == .available){
             registerForPreviewing(with: self, sourceView: collectionView)
         }
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +66,7 @@ class MainCollectionViewController: UICollectionViewController {
         if segue.identifier == "openDetailView" {
             if let indexPath = collectionView.indexPathsForSelectedItems?.first {
                 let detailVC = segue.destination as? DetailViewController
-                detailVC?.movieModelDetails = movieModels[indexPath.row]
+                detailVC?.movieModel = movieModels[indexPath.row]
             }
 
         }
@@ -131,7 +130,7 @@ extension MainCollectionViewController: UIViewControllerPreviewingDelegate {
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return nil }
         
         let movie = movieModels[indexPath.row]
-        detailVC.movieModelDetails = movie
+        detailVC.movieModel = movie
         // detailVC.preferredContentSize = CGSize(width: 0.0, height: 450)
         detailVC.mainViewController = self
         previewingContext.sourceRect = cell.frame
@@ -154,17 +153,14 @@ struct URLUtils {
     
 }
 
-//extension URL {
+// query
+//let params: [String: String] = ["name": "Kab yla", "dsfdsf": "sdsdd"]
+//let queryItems = params.map { URLQueryItem(name: $0.key, value: $0.value) }
 //
-//    static let basePath = "https://image.tmdb.org/t/p/w500/"
 //
-//    init?(imagePath: String) {
-//        let urlString = URL.basePath + imagePath
-//        if let url = URL(string: urlString) {
-//            self = url
-//        } else {
-//            return nil
-//        }
-//    }
-//
+//let urlString = "https://api.themoviedb.org/3"
+//if var components = URLComponents(string: urlString) {
+//    components.queryItems = queryItems
+//    let url = components.url
+//    print(url?.absoluteString)
 //}

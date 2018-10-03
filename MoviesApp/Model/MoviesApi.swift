@@ -13,6 +13,7 @@ import Alamofire
 typealias CompletionHandler = (DiscoveryResponse?) -> ()
 typealias GenresHandler = (GenresModel?) -> ()
 typealias TrailersHandler = (MovieVideoModel?) -> ()
+typealias DetailHandler = (MovieDetailModel?) -> ()
 
 class MoviesApi {
 
@@ -33,7 +34,6 @@ class MoviesApi {
         parameters["vote_count.gte"] = 100
         parameters["page"] = pageIndex
         Alamofire.request(Constants.baseUrlString + "/discover/movie", parameters: parameters).responseJSON { (response) in
-            print(response)
             DispatchQueue.main.async {
                 guard let data = response.data else { return }
                 do {
@@ -70,26 +70,40 @@ class MoviesApi {
     //MARK: - Download movies trailers from link
     
     func downloadTrailer(movieId: Int, completionHandler: @escaping TrailersHandler) {
+        print(Constants.baseUrlString + "/movie/\(movieId)" + "/videos?api_key=" + Constants.apiKey)
         Alamofire.request(Constants.baseUrlString + "/movie/\(movieId)" + "/videos?api_key=" + Constants.apiKey).responseJSON { (response) in
-            guard let data = response.data else { return }
-            do {
-                let movieTrailer = try JSONDecoder().decode(MovieVideoModel.self, from: data)
-                completionHandler(movieTrailer)
-            } catch {
-                print(error)
+            DispatchQueue.main.async {
+                guard let data = response.data else { return }
+                do {
+                    let movieTrailer = try JSONDecoder().decode(MovieVideoModel.self, from: data)
+                    completionHandler(movieTrailer)
+                } catch {
+                    print(error)
+                }
             }
-            }.resume()
+        }.resume()
     }
     
     // MARK: - Download movies details from link
     
-//    func downloadDetails(movieId: Int, com)
-    
-    
+    func downloadDetails(moviesId: Int, completionHandler: @escaping DetailHandler) {
+        Alamofire.request(Constants.baseUrlString + "/movie/\(moviesId)" + "?api_key=" + Constants.apiKey).responseJSON { (response) in
+            DispatchQueue.main.async {
+                guard let data = response.data else { return }
+                do {
+                    let movieDetails = try JSONDecoder().decode(MovieDetailModel.self, from: data)
+                    completionHandler(movieDetails)
+                } catch {
+                    print(error)
+                }
+            }
+        }.resume()
+    }
+}
+
+
     
 /*
 "https://www.imdb.com/title/tt1160368/"
 */
-
-}
 
