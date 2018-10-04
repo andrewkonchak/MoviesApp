@@ -30,14 +30,17 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var videoWebView: WKWebView!
     @IBOutlet weak var movieReleaseDate: UILabel!
     @IBOutlet weak var runtime: UILabel!
-    @IBOutlet weak var country: UILabel!
+    @IBOutlet weak var genre: UILabel!
     @IBOutlet weak var budget: UILabel!
     @IBOutlet weak var revenue: UILabel!
     @IBOutlet weak var voteCount: UILabel!
+    @IBOutlet weak var imdbButton: UIButton!
+    @IBOutlet weak var webButton: UIButton!
+    @IBOutlet weak var country: UILabel!
     
 
     @IBAction func WEBButton(_ sender: Any) {
-        babnikLox()
+        showHomepage()
     }
     @IBAction func IMDBButton(_ sender: Any) {
         showTutorial(imdbCode: movieDetails?.imdb_id ?? "")
@@ -45,7 +48,6 @@ class DetailViewController: UIViewController {
     // peek and pop
     override var previewActionItems: [UIPreviewActionItem] {
         let shareAction = UIPreviewAction(title: "Share movie info", style: .default) { (action, viewController) -> Void in
-            self.showTutorial(imdbCode: self.movieDetails?.imdb_id ?? "")
 //            let activityVC = UIActivityViewController(activityItems: ["Lol"], applicationActivities: nil)
 //            activityVC.popoverPresentationController?.sourceView = self.view
 //            self.present(activityVC, animated: true, completion: nil)
@@ -63,18 +65,19 @@ class DetailViewController: UIViewController {
         apiMovies.downloadDetails(moviesId: movieModel?.id ?? 0) { movieDetails in
             self.movieDetails = movieDetails
             self.downloadElements()
- 
+            
+            self.imdbButton.layer.cornerRadius = 10
+            self.webButton.layer.cornerRadius = 10
+            
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         apiMovies.downloadTrailer(movieId: movieModel?.id ?? 0) { response in
             self.response = response
             self.getVideo(videoCode: response?.results.first?.key ?? "")
         }
-       // downloadElements()
         releaseDateFormatter()
     }
     
@@ -83,6 +86,7 @@ class DetailViewController: UIViewController {
         videoWebView.load(URLRequest(url: url!))
     }
     
+    // IMDBButton
     func showTutorial(imdbCode: String) {
         if let url = URL(string: "https://www.imdb.com/title/\(imdbCode)/") {
             let config = SFSafariViewController.Configuration()
@@ -93,14 +97,36 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func babnikLox() {
-        if let homepage = movieDetails?.homepage, let url = URL(string: homepage) {
-            let confog = SFSafariViewController.Configuration()
-            confog.entersReaderIfAvailable = true
-            
-            let vc = SFSafariViewController(url: url, configuration: confog)
-            present(vc, animated: true)
+    // WebButton
+    func showHomepage() {
+        if movieDetails?.homepage == nil {
+        webButton.isEnabled = false
+        webButton.alpha = 0.5
+            let alert = UIAlertController(title: "OOPS!", message: "This web page is not available.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            if let homepage = movieDetails?.homepage, let url = URL(string: homepage) {
+                let confog = SFSafariViewController.Configuration()
+                confog.entersReaderIfAvailable = true
+                
+                let vc = SFSafariViewController(url: url, configuration: confog)
+                present(vc, animated: true)
+            }
         }
+    }
+    
+    // flag
+    private func flagFunc(country:String) -> String {
+        
+        let base = 127397
+        var usv = String.UnicodeScalarView()
+        for i in country.utf16 {
+            let inc = Int(i)
+            let code = Unicode.Scalar(base + inc)
+            usv.append(code!)
+        }
+        return String(usv)
     }
     
     func downloadElements() {
@@ -113,8 +139,9 @@ class DetailViewController: UIViewController {
         self.moviesTitle.text = details.title
         self.movieRating.text = forTrailingZero(temp: details.vote_average ?? 0.0)
         self.movieSummary.text = details.overview
-        self.country.text = details.tagline
+        self.genre.text = details.genres.compactMap { $0.name }.joined(separator: ", ")
         self.voteCount.text = String(details.vote_count ?? 0)
+        self.country.text = flagFunc(country: details.production_countries.compactMap {$0.iso_3166_1}.joined(separator: ", "))
         
         if let runtime = details.runtime {
             let hours = runtime / 60

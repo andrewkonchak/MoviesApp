@@ -88,6 +88,7 @@ class MoviesApi {
     
     func downloadDetails(moviesId: Int, completionHandler: @escaping DetailHandler) {
         Alamofire.request(Constants.baseUrlString + "/movie/\(moviesId)" + "?api_key=" + Constants.apiKey).responseJSON { (response) in
+            print(response)
             DispatchQueue.main.async {
                 guard let data = response.data else { return }
                 do {

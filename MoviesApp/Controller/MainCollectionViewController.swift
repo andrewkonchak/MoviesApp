@@ -25,12 +25,9 @@ class MainCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
-
-    
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //peek and pop
         if( traitCollection.forceTouchCapability == .available){
             registerForPreviewing(with: self, sourceView: collectionView)
@@ -150,7 +147,6 @@ struct URLUtils {
         let urlString = baseImagePath + path
         return URL(string: urlString)
     }
-    
 }
 
 // query

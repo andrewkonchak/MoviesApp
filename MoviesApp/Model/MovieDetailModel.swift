@@ -28,12 +28,18 @@ struct MovieDetailModel: Decodable {
     let popularity: Double?
     let poster_path: String?
     let production_companies: [Companies]
+    let production_countries: [Countries]
     
     struct Companies: Decodable {
         let id: Int?
         let logo_path: String?
         let name: String?
         let origin_country: String?
+    }
+    
+    struct Countries: Decodable {
+        let iso_3166_1: String?
+        let name: String?
     }
     
     let release_date: String?
